@@ -7,7 +7,7 @@ export class AppController {
     return [
       {
         name: 'Name Dudeman',
-        talk: 'Angular for your face',
+        talk: 'Angular for your face 1',
         image: 'http://via.placeholder.com/50x50'
       },
       {

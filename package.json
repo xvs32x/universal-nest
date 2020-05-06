@@ -24,7 +24,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run universal-starter-v9:serve-ssr",
+    "dev:ssr": "ng run front:serve-ssr",
     "serve:ssr": "node dist/universal-starter-v9/server/main.js",
     "prebuild:ssr": "ngcc",
     "build:ssr": "ng build --prod && ng run universal-starter-v9:server:production",

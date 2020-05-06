@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "universal-starter-v9": {
+    "front": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -11,28 +11,28 @@
         }
       },
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "projects/front",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/universal-starter-v9/browser",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "outputPath": "dist/front/browser",
+            "index": "projects/front/index.html",
+            "main": "projects/front/main.ts",
+            "polyfills": "projects/front/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.css"],
+            "assets": ["projects/front/favicon.ico", "projects/front/assets"],
+            "styles": ["projects/front/styles.css"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "projects/front/environments/environment.ts",
+                  "with": "projects/front/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -61,29 +61,29 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "universal-starter-v9:build"
+            "browserTarget": "front:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "universal-starter-v9:build:production"
+              "browserTarget": "front:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "universal-starter-v9:build"
+            "browserTarget": "front:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+            "main": "projects/front/test.ts",
+            "polyfills": "projects/front/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.css"],
+            "assets": ["projects/front/favicon.ico", "projects/front/assets"],
+            "styles": ["projects/front/styles.css"],
             "scripts": []
           }
         },
@@ -102,18 +102,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "universal-starter-v9:serve"
+            "devServerTarget": "front:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "universal-starter-v9:serve:production"
+              "devServerTarget": "front:serve:production"
             }
           }
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/universal-starter-v9/server",
+            "outputPath": "dist/front/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
             "externalDependencies": [
@@ -141,21 +141,21 @@
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
-            "browserTarget": "universal-starter-v9:build",
-            "serverTarget": "universal-starter-v9:server"
+            "browserTarget": "front:build",
+            "serverTarget": "front:server"
           },
           "configurations": {
             "production": {
-              "browserTarget": "universal-starter-v9:build:production",
-              "serverTarget": "universal-starter-v9:server:production"
+              "browserTarget": "front:build:production",
+              "serverTarget": "front:server:production"
             }
           }
         },
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "browserTarget": "universal-starter-v9:build:production",
-            "serverTarget": "universal-starter-v9:server:production",
+            "browserTarget": "front:build:production",
+            "serverTarget": "front:server:production",
             "routes": ["/"]
           },
           "configurations": {
@@ -163,9 +163,130 @@
           }
         }
       }
+    },
+    "front1": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/front",
+      "sourceRoot": "projects/front/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/front",
+            "index": "projects/front/src/index.html",
+            "main": "projects/front/src/main.ts",
+            "polyfills": "projects/front/src/polyfills.ts",
+            "tsConfig": "projects/front/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/front/src/favicon.ico",
+              "projects/front/src/assets"
+            ],
+            "styles": [
+              "projects/front/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/front/src/environments/environment.ts",
+                  "with": "projects/front/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "front:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "front:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "front:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/front/src/test.ts",
+            "polyfills": "projects/front/src/polyfills.ts",
+            "tsConfig": "projects/front/tsconfig.spec.json",
+            "karmaConfig": "projects/front/karma.conf.js",
+            "assets": [
+              "projects/front/src/favicon.ico",
+              "projects/front/src/assets"
+            ],
+            "styles": [
+              "projects/front/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/front/tsconfig.app.json",
+              "projects/front/tsconfig.spec.json",
+              "projects/front/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/front/e2e/protractor.conf.js",
+            "devServerTarget": "front:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "front:serve:production"
+            }
+          }
+        }
+      }
     }
   },
-  "defaultProject": "universal-starter-v9",
+  "defaultProject": "front",
   "cli": {
     "analytics": false
   }

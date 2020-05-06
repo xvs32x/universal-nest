@@ -26,7 +26,7 @@ import { SharedModule } from './modules/shared/shared.module';
             m => m.SpeakersModule
           )
       }
-    ]),
+    ], {initialNavigation: 'enabled'}),
     SharedModule
   ],
   bootstrap: [AppComponent]
